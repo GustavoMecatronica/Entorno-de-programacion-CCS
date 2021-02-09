@@ -1,0 +1,69 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+005     PORTA
+006     PORTB
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     contador
+021-024 suma
+025-029 datos
+02A     @TRIS_C
+02B     motor.var1
+02B     main.@SCRATCH1
+02C-02F motor.division
+02C     @delay_ms1.P1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+107.6   C1OUT
+108.6   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @delay_ms1
+000019  motor
+000021  main
+000021  @cinit1
+000040  @cinit2
+
+Project Directory:
+    C:\Users\Gustavo\Documents\UNIVERSIDAD\5TO CUATRIMESTRE\MICROCONTROLADORES\ENTORNO_SENTENCIAS\
+
+Project Files:
+    ENTORNO_SENTENCIAS.c                                    [08-feb.-21 20:58  CRC=3750D9D5]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16f887.h [30-oct.-19 15:48  CRC=C6420252]
+
+Source signature=C3D4DE79
+Program memory checksum=0000
+Hex file CRC=F321
+
+Units:
+    C:\Users\Gustavo\Documents\UNIVERSIDAD\5TO CUATRIMESTRE\MICROCONTROLADORES\ENTORNO_SENTENCIAS\ENTORNO_SENTENCIAS (main)
+
+Compiler Settings:
+    Processor:      PIC16F887
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   ENTORNO_SENTENCIAS.xsym
+    Errors:      ENTORNO_SENTENCIAS.err
+    Ext Symbols: ENTORNO_SENTENCIAS.esym
+    INHX8:       ENTORNO_SENTENCIAS.hex
+    Symbols:     ENTORNO_SENTENCIAS.sym
+    List:        ENTORNO_SENTENCIAS.lst
+    Debug/COFF:  ENTORNO_SENTENCIAS.cof
+    Project:     ENTORNO_SENTENCIAS.ccspjt
+    Call Tree:   ENTORNO_SENTENCIAS.tre
+    Statistics:  ENTORNO_SENTENCIAS.STA

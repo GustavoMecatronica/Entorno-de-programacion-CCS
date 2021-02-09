@@ -1,0 +1,35 @@
+[PROJECT]
+Target=ENTORNO_SENTENCIAS.hex
+Processor_Text=PIC16F887
+CCSVersion=5.091
+Compiler=PCM
+[Target Data]
+FileList=ENTORNO_SENTENCIAS.c
+[ENTORNO_SENTENCIAS.c]
+Type=4
+[mru-list]
+1=ENTORNO_SENTENCIAS.c
+
+[defines]
+buildcount=5
+
+[ProjectLog]
+Days=1
+D1=08-02-2021
+D1_L=6
+D1_L1=[72762]Started Editing.
+D1_L2=[76017]Stopped Editing.
+D1_L3=[76030]Started Editing.
+D1_L4=[76921]Stopped Editing.
+D1_L5=[77645]Started Editing.
+D1_L6=[78336]Stopped Editing.
+
+[Opened Files]
+1=ENTORNO_SENTENCIAS.c
+t1=29
+2=..\DISPLAY_7_SEG\DISPLAY_7_SEG.c
+t2=26
+Count=2
+[Units]
+Count=1
+1=ENTORNO_SENTENCIAS (main)

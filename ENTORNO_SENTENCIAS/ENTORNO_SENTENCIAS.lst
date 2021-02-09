@@ -1,0 +1,239 @@
+CCS PCM C Compiler, Version 5.091, 13314               08-feb.-21 20:58
+
+               Filename:   C:\Users\Gustavo\Documents\UNIVERSIDAD\5TO CUATRIMESTRE\MICROCONTROLADORES\ENTORNO_SENTENCIAS\ENTORNO_SENTENCIAS.lst
+
+               ROM used:   127 words (2%)
+                           Largest free fragment is 2048
+               RAM used:   17 (5%) at main() level
+                           21 (6%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   021
+0003:  NOP
+.................... ////////////////DIRECTIVAS//////////////////////
+.................... #include <16f887.h> //libreria del microcontrolador
+.................... //////////// Standard Header file for the PIC16F887 device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F887
+.................... 
+.................... #list
+.................... 
+.................... #fuses XT, NOPROTECT, NOWDT, MCLR  //aqui declaramos los fusibles; para ir a la fusibles vamos a la pestaña View>Config Bits>seleccionamos el pic que usamos.
+.................... #use delay(internal=4000000) //aqui indicamos el tipo de reloj y la frecuencia
+0004:  MOVLW  2C
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  01
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  4A
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  RETURN
+.................... #BYTE PORTA= 5  //con estas dos instrucciones se le indica al microcontrolador la direccion de memoria RAM de cada puerto
+.................... #BYTE PORTB= 6
+.................... #DEFINE ENTRADA PORTA,0  // aqui le asignamos un nombre a los pines
+.................... #DEFINE SALIDA  PORTB,5
+.................... ///////////VARIABLES GLOBALES////////////////////////
+.................... int contador=0;
+.................... float suma=0;
+.................... int datos[5]={1,2,3,4,5};
+*
+0041:  MOVLW  01
+0042:  BCF    03.6
+0043:  MOVWF  25
+0044:  MOVLW  02
+0045:  MOVWF  26
+0046:  MOVLW  03
+0047:  MOVWF  27
+0048:  MOVLW  04
+0049:  MOVWF  28
+004A:  MOVLW  05
+004B:  MOVWF  29
+.................... void motor();
+.................... ///////////FUNCION PRINCIPAL////////////////////
+.................... void main (){
+*
+0021:  MOVF   03,W
+0022:  ANDLW  1F
+0023:  MOVWF  03
+0024:  MOVLW  61
+0025:  BSF    03.5
+0026:  MOVWF  0F
+0027:  CLRF   10
+0028:  MOVF   0F,W
+0029:  BCF    03.5
+002A:  CLRF   20
+002B:  CLRF   24
+002C:  CLRF   23
+002D:  CLRF   22
+002E:  CLRF   21
+002F:  MOVLW  FF
+0030:  MOVWF  2A
+0031:  BSF    03.5
+0032:  BSF    03.6
+0033:  MOVF   09,W
+0034:  ANDLW  C0
+0035:  MOVWF  09
+0036:  BCF    03.6
+0037:  BCF    1F.4
+0038:  BCF    1F.5
+0039:  MOVLW  00
+003A:  BSF    03.6
+003B:  MOVWF  08
+003C:  BCF    03.5
+003D:  CLRF   07
+003E:  CLRF   08
+003F:  CLRF   09
+0040:  BCF    03.7
+.................... ///////////distintas formas de delcarar un puerto como entrada o salida///////////
+.................... set_tris_b(0b00000000); 
+*
+004C:  MOVLW  00
+004D:  BSF    03.5
+004E:  MOVWF  06
+.................... set_tris_a(0xFF);
+004F:  MOVLW  FF
+0050:  MOVWF  05
+.................... set_tris_c(0b01010000);
+0051:  MOVLW  50
+0052:  MOVWF  07
+0053:  BCF    03.5
+0054:  MOVWF  2A
+.................... 
+.................... /////////////como activar o desactivar un pin especifico de un puerto//////////////
+.................... output_low(PIN_B0);
+0055:  BSF    03.5
+0056:  BCF    06.0
+0057:  BCF    03.5
+0058:  BCF    06.0
+.................... delay_ms(500);
+0059:  MOVLW  02
+005A:  MOVWF  2B
+005B:  MOVLW  FA
+005C:  MOVWF  2C
+005D:  CALL   004
+005E:  DECFSZ 2B,F
+005F:  GOTO   05B
+.................... output_high(PIN_B0);
+0060:  BSF    03.5
+0061:  BCF    06.0
+0062:  BCF    03.5
+0063:  BSF    06.0
+.................... delay_ms(500);
+0064:  MOVLW  02
+0065:  MOVWF  2B
+0066:  MOVLW  FA
+0067:  MOVWF  2C
+0068:  CALL   004
+0069:  DECFSZ 2B,F
+006A:  GOTO   066
+.................... 
+.................... bit_set(PORTB,5);
+006B:  BSF    06.5
+.................... 
+.................... bit_clear(PORTB,7);
+006C:  BCF    06.7
+.................... 
+.................... ////////////como sacar un valor en un puerto//////////////////////
+.................... PORTB=0xFF;//pone todo el puerto b en un valor alto (5V)
+006D:  MOVLW  FF
+006E:  MOVWF  06
+.................... PORTB=0B10010100; /*pone un valor especifico a cada pin, el bit mas a la derecha es el pin B0 y el pin mas a la izquierda es el pin B7, dicho
+006F:  MOVLW  94
+0070:  MOVWF  06
+.................... de esta forma, el pin B0 se pone a 0V y el pin B7 se pone a 5V */
+.................... 
+.................... //////////como invertir el valor de un pin ////////////   
+.................... output_toggle(PIN_b1);
+0071:  BSF    03.5
+0072:  BCF    06.1
+0073:  MOVLW  02
+0074:  BCF    03.5
+0075:  XORWF  06,F
+.................... ///////////como preguntar si una entrada esta activada////////////////
+.................... if(bit_test(PORTA,3)){  //variable o pin dentro de los parentesis de bit_test
+0076:  BTFSC  05.3
+.................... //instrucciones si la variable o pin esta activada/o
+....................  }else{
+0077:  GOTO   078
+....................    //isntrucciones si la variable o pin esta desactivada/o
+....................  }
+.................... //////////como preguntar si una entrada esta desactivada/////////////
+.................... if(!bit_test(ENTRADA)){  
+0078:  BTFSS  05.0
+.................... //isntrucciones si la variable o pin esta desactivada/o
+....................  }else{
+0079:  GOTO   07A
+....................    //instrucciones si la variable o pin esta activada/o
+....................  }
+.................... //////////////como hacer un bucle infinito////////
+.................... while(TRUE){
+007A:  GOTO   07A
+.................... //intrucciones que se repetiran por siempre
+.................... }
+.................... 
+.................... do{
+.................... 
+.................... }while(TRUE);
+007B:  GOTO   07B
+.................... 
+.................... for(;;){
+007C:  GOTO   07C
+.................... 
+.................... //instrucciones
+.................... 
+.................... }
+.................... 
+.................... //////como llamar una funcion/////
+.................... 
+.................... motor();
+007D:  GOTO   019
+.................... 
+.................... 
+.................... }
+.................... ////////////////OTRAS FUNCIONES/////////////////////////
+007E:  SLEEP
+.................... void motor(){
+*
+0019:  CLRF   2B
+001A:  CLRF   2F
+001B:  CLRF   2E
+001C:  CLRF   2D
+001D:  CLRF   2C
+.................... ///////variables locales//////
+.................... int var1=0;
+.................... float division=0;
+001E:  BCF    0A.3
+001F:  BCF    0A.4
+0020:  GOTO   07E (RETURN)
+.................... 
+.................... //isntrucciones o estructuras de la funcion motor
+.................... 
+.................... }
+
+Configuration Fuses:
+   Word  1: 2FE4   INTRC_IO NOWDT PUT MCLR NOPROTECT NOCPD BROWNOUT IESO FCMEN NOLVP NODEBUG
+   Word  2: 3FFF   BORV40 NOWRT
